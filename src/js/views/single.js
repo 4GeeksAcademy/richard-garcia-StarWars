@@ -6,17 +6,34 @@ import { Context } from "../store/appContext";
 export const Single = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
+
+	useEffect(() => {
+		actions.personajeIndividual(params.theid)
+	}, [])
 	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
+		<div className="container">
 
-			<hr className="my-4" />
+			<div class="card mb-3" style={{ maxWidth: "720px" }}>
+				<div class="row g-0">
+					<div class="col-md-4">
+						<img src={"https://starwars-visualguide.com/assets/img/characters/" + (params.theid) + ".jpg"} class="img-fluid rounded-start" alt="..." />
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title">{store.personaje.name}</h5>
+							<p class="card-text">height: {store.personaje.height}</p>
+							<p class="card-text">hair_color: {store.personaje.hair_color}</p>
+							<p class="card-text">eye_color: {store.personaje.eye_color}</p>
+							<p class="card-text">birth_year: {store.personaje.birth_year}</p>
+							<p class="card-text">gender: {store.personaje.gender}</p>
+							<p class="card-text">mass: {store.personaje.mass}</p>
+							<p class="card-text">homeworld: {store.personaje.homeworld}</p>
+							
 
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
