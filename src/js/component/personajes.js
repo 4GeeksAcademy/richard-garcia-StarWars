@@ -22,7 +22,9 @@ export const Personajes = () => {
                                 <h5 class="card-title">{item.name} </h5>
                                 <p class="card-text">Gender: {item.gender}</p>
                                 <p class="card-text">Eye Color: {item.eye_color}</p>
-                                <Link to={"/single/" + (id+1) }  class="btn btn-primary">More info</Link>
+                                <Link to={"/single/" + (id + 1)} class="btn btn-primary">More info</Link>
+                                <div class="btn btn-primary float-end" onClick={() => actions.favoritos(item.name)}>❤️</div>
+
                             </div>
                         </div>
                     ))}

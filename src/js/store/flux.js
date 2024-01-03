@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			personaje: {},
 			planetas: [],
-			planeta: {}
+			planeta: {},
+			favoritos: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -61,7 +62,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 			},
+
+			favoritos: (nombre) => {
+				const store = getStore()
+				if (store.favoritos.includes(nombre)) {
+					// Si esta incluido lo va a borrar
+					let aux = [] 
+					aux = store.favoritos.filter((elemento)=>elemento != nombre)
+					setStore({
+						favoritos: aux
+					})
+				}
+				else {
+					setStore({
+						favoritos: [...store.favoritos, nombre]
+					})
+				}
+			}
 		}
+
 	};
 };
 
